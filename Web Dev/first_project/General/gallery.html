@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header class="self-clear">
+        <img src="https://fbcoverstreet.com/thumbnail/78506M1onb658rSbwOkEsdK98t7j8934x28V05c897v8K0Ve1253Cg4QPw182Tm7.webp" alt="Tower Bridge">
+        <h1>This is East London</h1>
+    </header>
+    <nav class="self-clear">
+        <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About Us</a></li>
+        </ul>
+    </nav>
+    <main class="self-clear">
+        <article>
+            <h2>Article Title</h2>
+            <p>Article Paragraph 1</p>
+            <p>Article Paragraph 2</p>
+        </article>
+        <aside>
+            <h3>Sidebar Title</h3>
+            <p>Sidebar Paragraph</p>
+        </aside>
+    </main>
+    <footer class="self-clear"></footer>
+</body>
+
+<style>
+    header {
+        border: 1px solid black;
+        padding: .5em 0 .1em 1em;
+    }
+
+    header img {
+        float: left;
+        padding-left: 1em;
+    }
+
+    h1 {
+        display: inline-block;
+        padding-left: .5em;
+        font-size: 2.5em;
+        float: left;
+        padding-left: .5em;
+    }
+
+    .self-clear:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    nav {
+        background: lightgray;
+        padding: .5em;
+    }
+
+    nav ul {
+        list-style-type: none;
+    }
+
+    nav li {
+        float: left;
+        padding-right: 1.5em;
+    }
+
+    article {
+        float: left;
+        width: 75%;
+        background: white;
+    }
+
+    aside {
+        float: right;
+        width: 25%;
+        background: powderblue
+    }
+
+    main, aside {
+        background-color: #b4a7d6;
+    }
+
+    .self-clear {
+        content: "";
+        display: block;
+        clear: both;
+    }
+</style>
+</html>
+

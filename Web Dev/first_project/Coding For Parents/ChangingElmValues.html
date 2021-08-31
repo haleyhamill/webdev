@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <body>
+
+        <h1>Lottery Numbers</h1>
+        <div id="results"></div>
+
+        <button id="getNum">Pick number</button>
+        <button id="reset">Reset</button>
+
+        <script>
+            var button = document.getElementById("getNum");
+            var results = document.getElementById("results");
+            var reset = document.getElementById("reset");
+
+            var current = [];
+            button.onclick = function() {
+                var number = Math.round(Math.random() * 50);
+                if(current.length < 6) {
+                    current.push(number);
+                    results.innerHTML = current;
+                }
+            }
+
+            reset.onclick = function() {
+                current = [];
+                results.innerHTML = current;
+            }
+        </script>
+    </body>
+</html>

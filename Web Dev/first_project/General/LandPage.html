@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+            <div class="header-image">
+                <img style="width:300px;" src="https://images-na.ssl-images-amazon.com/images/I/41Hr1WWILqL._SX326_BO1,204,203,200_.jpg" alt="Header Photo">
+            </div>
+
+            <div class="header-info">
+                <div class="surtitle">Coming Soonish!</div>
+                <h1 class="title">The Web Designer</h1>
+                <h3 class="subtitle">
+                    A story of HTML, CSS, and the big city.</h3>
+                <p class="intro">
+                    She knew HTML. She knew CSS. But did she know love? Read this
+                    destined-to-be-remaindered novel that <em>The New York Times Book Review</em>
+                    described as &ldquo;reasonably grammatical&rdquo; and the <em>Times Literary
+                    Supplment</em> called &ldquo;bathroom-worthy.&rdquo; Pre-order your paperback
+                    copy now for just $14.99.
+                </p>
+                <button class="btn" type="button">I want it!</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="description">
+        <div class="container">
+        At High Falutin High, the arts high school in her home town, Daisy Fontana fell
+        in love. Not with a boy, or even with a girl, for that matter, but with something
+        altogether more interesting: web design. Instead of a BFF, she had CSS. Instead of
+        singing and...
+        </div>
+    </div>
+
+    <div class="testimonials">
+        <div class="container">
+            <div class="testimonials-text">
+            <p class="testimonial">"I've never seen a novel with so much HTML and CSS code. I mean there is a
+            <em>lot</em> of code in this book! So much code. Code, code, code." -T.J. Murphy, Nowhere, OK</p>
+            <p class="testimonial">"I particularly loved the scenes where Daisy is by herself in her room
+            writing HTML and CSS. It's hard to make writing tags and properties interesting, and the author
+            almost does it." -M. Dash, Tightwad, MO</p>
+            <p class="testimonial">"I couldn't really put it down. No, really, I could <em>not</em> physically
+            put this book down. Thanks to the cheap cover stock, the book was literally glued to my hands. I had
+            to go to the emergency room to get the thing off me." -A. Pendergast, Walla Walla, WA</p>
+    </div>
+        <div class="testimonials-image" alt="Illustration of people talking"><img src="https://www.championsschool.com/assets/icons/icon-reviews.png">
+    </div>
+    </div>
+    </div>
+
+    <div class="product-versions">
+        Pricing table for the different versions of the product
+    </div>
+
+    <div class="social">
+        Social media links
+    </div>
+
+    <div class="footer">
+        Site links and copyright notice
+    </div>
+
+    
+</body>
+</html>
+
+<style>
+    .header {
+        background: url(https://c4.wallpaperflare.com/wallpaper/738/362/544/night-bokeh-london-blurred-wallpaper-preview.jpg);
+        background-attachment: fixed;
+        background-position: right center;
+        background-size: cover;
+        padding-bottom: 1em;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .header-image {
+        float: left;
+        width: 30%;
+        margin-top: 3em;
+        margin-right: 3em;
+        text-align: right;
+    }
+
+    .header-info {
+        float: right;
+        width: 60%;
+        margin-top: 4em;
+        color: white;
+    }
+
+    .btn {
+        max-height: 2.5em;
+        border: none;
+        padding: .75em 1.25em;
+        font-family: inherit;
+        font-size: 1em;
+        font-weight: bold;
+        color: white;
+        background-color: darkorchid;
+    }
+
+    .description {
+        width: 100%;
+        padding: 1em 0;
+        font-size: 1.25em;
+        background-color: white;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        clear: both;
+    }
+
+    .container::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .testimonials {
+        width: 100%;
+        padding: 1em 0;
+        font-size: 1.25em;
+        background-color: plum;
+    }
+
+    .testimonials-text {
+        float: left;
+        width: 75%;
+    }
+
+    .testimonial {
+        margin-bottom: .75em;
+    }
+
+    .testimonials-image {
+        float: right;
+    }
+</style>

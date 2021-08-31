@@ -1,0 +1,163 @@
+html {
+    margin:0
+}
+
+body {
+    margin:0
+}
+
+.sflogo {
+    color:white;
+    font-style:italic;
+    font-family:Verdana;
+    margin:0;
+    padding:17px;
+    padding-left:1em;
+}
+
+.header1 {
+    background-color: #D62311;
+    height:76px;
+    width:100%;
+    padding:0;
+}
+
+.header2 {
+    background:url(https://live.staticflickr.com/927/43465932702_2f85c55c14_o.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.pfp {
+    float:left;
+    width: 30%;
+    margin: 6em 0em 0em 2em;
+    text-align: right;
+    border-radius: 50%;
+    box-shadow:0 0 5px 1px;
+}
+
+.header-info {
+    background-color: #D62311;
+    opacity: 0.6;
+    float: right;
+    width: 50%;
+}
+
+.header-text {
+    font-family:verdana, sans-serif;
+    color: white;
+    float: right;
+}
+
+.box1 {
+    position: absolute;
+    width: 33%;
+    height:65vh;
+    padding: 1em;
+    top: 155px;
+    left: 35vw;
+    border-radius: 20px;
+}
+
+/* STATE FARM COPY */
+element.style {
+}
+
+@media screen and (max-width: 1023px) {
+    .sfAppWidget[data-v-9103fd86] {
+        padding: 12px;
+}}
+
+.sfAppWidget[data-v-9103fd86] {
+    position: absolute;
+    height: 60vh;
+    width: 25%;
+    padding: 1em;
+    top: 155px;
+    left: 71vw;
+    background-color: #e6e6e6;
+    border-radius: 20px;
+
+}
+
+ :after, :before {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
+}
+body {
+    font-family: SourceSansPro-Regular,Arial,sans-serif;
+    color: #505050;
+    font-size: 16px;
+}
+, :after, :before {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+, :after, :before {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* STATE FARM COPY END */
+
+
+.box2 {
+    position: absolute;
+    width: 65%;
+    height:65vh;
+    top: 0px;
+    left: 37vw;
+    padding: 1em;
+    border-radius: 20px;
+}
+
+.about {
+    width: 100%;
+}
+
+@media screen and (max-width:80em) {
+    .header2 {
+        height: 22vw;
+    }
+
+    .pfp {
+        height: 20vw;
+        width: 20vw;
+    }
+}
+
+
+@media screen and (max-width: 50em) {
+    .header1 {
+        height:30px;
+    }
+
+    .sflogo {
+        font-size:1em;
+        padding:4px;
+        padding-left:2em;
+    }
+}

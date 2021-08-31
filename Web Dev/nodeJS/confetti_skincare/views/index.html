@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="Script.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+        <h1>Header 1 Goes Here</h1>
+        <button onclick="changeColors('red', 'white')">Red Background, White Text</button>
+        <button onclick="changeColors('white', 'red')">White Background, Red Text</button>
+    </header>
+
+    <nav>
+    <ul id="my-menu">
+        <a href="/">Home</a>
+        <a href="/">About</a>
+        <a href="/">Contact</a>
+        <a href="/">Etc.</a>
+    </ul>
+    </nav>
+
+    <main><!--MAIN CONTENT GOES HERE-->
+
+        <article class="container"><!--ARTICLE CONTENT GOES HERE-->
+            <section>
+                <h2>Section 1 Header Goes Here</h2>
+                <p>Section 1 Text Goes Here</p>
+            </section>
+            <section>
+                <h2>Section 2 Header Goes Here</h2>
+                <p>Section 2 Text Goes Here</p>
+                <p>Notice how an <span style="font-variant:small-caps">inline element</span> flows right along with the rest
+                of the text.</p>
+            </section>
+        </article>
+
+        <aside><!--SIDEBAR, SITE NEWS, LINKS-->
+            <a href="" alt="">Aside Link 1</a>
+            <a href="" alt="">Aside Link 2</a>
+            <a href="" alt="">Aside Link 3</a>
+        </aside>
+    </main>
+
+    <div id="my-div">Requisite Social Media Links:
+        <a href="https://facebook.com/">Facebook</a>
+        <a href="https://twitter.com/">Twitter</a>
+        <a href="https://instagram.com/">Instagram</a>
+        <a href="http://www.hbo.com/silicon-valley">Hooli</a>
+    </div>
+
+    <footer><script>document.write("Copyright " + new Date().getFullYear() + " Haley Hamill");</script></footer>
+
+
+</body>
+</html>

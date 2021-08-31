@@ -1,0 +1,57 @@
+/* APPLY TO EVERY STYLESHEET */
+
+header {
+    border: 1px solid black;
+    text-align: center;
+}
+
+nav {
+    height: 2.5rem;
+    margin-top: 1rem;
+    border: 1px solid black;
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    margin-top: 1rem;
+}
+
+article {
+    flex-grow: 1;
+    margin-right: 1rem;
+    border: 1px solid black;
+    overflow-y: auto;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 200px 400px;
+    grid-template-rows: 300px;
+}
+
+aside {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 10rem;
+    border: 1px solid black;
+}
+
+div {
+    height: 2.5rem;
+    margin-top: 1rem;
+    border: 1px solid black;
+}
+
+footer {
+    height: 2.5rem;
+    margin-top: 1rem;
+    border: 1px solid black;
+}
+
+.sectionText {
+    color: blue;
+}

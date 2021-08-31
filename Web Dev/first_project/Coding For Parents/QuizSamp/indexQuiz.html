@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Which programming language is this page built using?</p>
+    <div>
+        <label><input type="radio" name="q1" value="1">Ruby</label>
+        <label><input type="radio" name="q1" value="2">Python</label>
+        <label><input type="radio" name="q1" value="3">Javascript</label>
+        <label><input type="radio" name="q1" value="4">PHP</label>
+        <label><input type="radio" name="q1" value="5">.NET</label>
+    </div>
+        <br><button id="submit">submit</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#submit").click(function() {
+        var answer =  $("input[name=q1]:checked").val();
+
+        if(answer == 3) {
+            alert("correct!");
+        }
+        else {
+            alert("wrong, try again!");
+        }
+    });
+</script>
+</body>
+</html>

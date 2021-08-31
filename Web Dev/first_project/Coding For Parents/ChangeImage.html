@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+    <body>
+        <h1 id="heading">Click buttons to change my color!</h1>
+        <button onclick="changeClr('red')">Go red</button>
+        <button onclick="changeClr('blue')">Go blue</button>
+        <button onclick="changeClr('green')">Go green</button>
+        <script>
+            function changeClr(clr) {
+                document.getElementById("heading").style.color = clr;
+            }
+        </script>
+    </body>
+</html>

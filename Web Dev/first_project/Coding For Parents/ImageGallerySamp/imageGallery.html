@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 95vh;
+        }
+
+        #previous {
+            display: inline-block;
+        }
+    </style>
+</head>
+<html>
+<body>
+
+<div class="contentBox">
+    <img id="image" src="#" /><br>
+    <button id="previous">Previous</button>
+    <button id="next">Next</button>
+</div>
+
+<script>
+    var images = ["https://data.whicdn.com/images/358008417/original.jpg", 
+    "https://data.whicdn.com/images/349983491/original.jpg", 
+    "https://data.whicdn.com/images/333938839/original.jpg", 
+    "https://data.whicdn.com/images/180210772/original.jpg"];
+    var current = 0;
+
+    function changeImg(num) {
+        $("#image").attr("src", images[num]);
+    }
+    changeImg(current);
+
+    $("#next").click(function() {
+        if(current == images.length - 1) {
+            current = 0;
+        }
+        else {
+            current++;
+        }
+        changeImg(current);
+    });
+
+    $("#previous").click(function() {
+        if(current == 0) {
+            current = images.length - 1;
+        }
+        else {
+            current--;
+        }
+        changeImg(current);
+    });
+</script>
+</body>
+</html>
