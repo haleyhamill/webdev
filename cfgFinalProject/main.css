@@ -128,3 +128,8 @@ nav {
     background-color: red;
     color: white;
 }
+
+#creativeDescentImg {
+    height: 50%;
+    width: 50%;
+}
