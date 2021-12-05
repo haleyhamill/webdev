@@ -111,7 +111,7 @@ hr {
 footer {
     display: flex;
     justify-content: center;
-    background: #666;
+    background: black;
     height: 100px;
     padding: 30px;
 }
@@ -132,4 +132,9 @@ nav {
 #creativeDescentImg {
     height: 50%;
     width: 50%;
+}
+
+.solutions-img {
+    height: 10%;
+    width: 75%;
 }
