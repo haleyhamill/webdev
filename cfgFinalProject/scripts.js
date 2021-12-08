@@ -19,6 +19,7 @@ function myFunction() {
   }
 }
 
+//game
 const textElement = document.getElementById("text");
 const optionButtonsElement = document.getElementById("option-buttons");
 
@@ -218,7 +219,7 @@ const textNodes = [
   {
     id: 10,
     text:
-      " You forgot about the climate change and started to use a petrol car again, plastic bags, more energy than before and eat more meat! Here we go again 😭!",
+      "You forgot about the climate change and started to use a petrol car again, plastic bags, more energy than before and eat more meat! Here we go again 😭!",
     options: [
       {
         text: "Try again! You are on the right track!",
@@ -233,7 +234,7 @@ const textNodes = [
     options: [
       {
         text:
-          "Congratulations! ❤️ Please remember to switch off the lights when you finish celebrating!",
+          "Congratulations! ❤️ Please remember to switch off the lights when you finish celebreting!",
         nextText: -1
       }
     ]
