@@ -1,5 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import {render} from "react-dom";
 
-const element = React.createElement("p", {}, "Hello World");
-ReactDOM.render(element, document.getElementById('react-root'))
+const root = document.querySelector("#react-root");
+const element = React.createElement("div");
+
+render(element, root);
