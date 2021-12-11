@@ -1,7 +1,8 @@
 import React from "react";
-import {render} from "react-dom";
 
-const root = document.querySelector("#react-root");
-const element = React.createElement("div");
-
-render(element, root);
+function getLoginStatus(is_loggedin) {
+    if (is_loggedin) {
+        return <p>You are logged in</p>;
+    }
+    return <a href="/login">Login</a>;
+}
