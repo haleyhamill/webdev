@@ -1,5 +1,9 @@
 import React from "react";
 
-function getDropdownOption(option) {
-    return <option className={"select-" + option}>{option}</option>
+function getPaymentButton(user) {
+    let name = "disabled";
+    if (user.is_loggedin) {
+        name = "clickable";
+    }
+    return <button className={name}>Pay</button>;
 }
