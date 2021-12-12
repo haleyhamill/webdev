@@ -1,18 +1,15 @@
 import React from "react";
+import {render} from "react-dom";
 
-function getFooter() {
-    return(
-    <>
-        <h3>Your online supermarket</h3>
-        <ul>
-            <li>Contact</li>
-            <li>Press</li>
-            <li>About</li>
-        </ul>
-        <p>All rights reserved &copy;</p>
-    </>
-    )
+function Footer() {
+    return (
+        <>
+            <h3>Company name</h3>
+            <p>All rights reserved</p>
+        </>
+    );
 }
 
-// sample usage (do not modify)
-console.log(getFooter());
+const root = document.querySelector("#react-root");
+
+render(<Footer/>, root)
