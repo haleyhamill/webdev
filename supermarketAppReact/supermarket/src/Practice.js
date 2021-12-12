@@ -1,15 +1,21 @@
 import React from "react";
 import {render} from "react-dom";
 
-function Footer() {
-    return (
+function Hero() {
+    return(
         <>
-            <h3>Company name</h3>
-            <p>All rights reserved</p>
+            <h1>Welcome to our supermarket</h1>
+            <p>Start shopping</p>
         </>
-    );
-}
+    )
+};
 
 const root = document.querySelector("#react-root");
 
-render(<Footer/>, root)
+render(<Hero/>, root);
+
+
+
+
+// do not modify
+render(<Hero></Hero>, document.querySelector("#react-root"));
