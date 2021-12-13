@@ -1,10 +1,6 @@
 import React from "react";
-import clsx from "clsx";
 
-function MyComponent(props) {
-    const className = clsx({
-        "title": props.loggedIn
-    });
-    return <h1 className={className}></h1>
+export default function Button(props) {
+    const {children, ...rest} = props;
+    return <button {...rest}>{children}</button>
 }
-const element = <MyComponent loggedIn={true} />;
