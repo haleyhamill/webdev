@@ -1,11 +1,10 @@
 import React from "react";
+import clsx from "clsx";
 
-function Navbar(props) {
-    if (!props.loggedIn) {
-        return <p>Register</p>
-    }
-    return <p>Welcome back!</p>
+function MyComponent(props) {
+    const className = clsx({
+        "title": props.loggedIn
+    });
+    return <h1 className={className}></h1>
 }
-
-const element1 = <Navbar loggedIn={true} />
-const element2 = <Navbar loggedIn={false} />
+const element = <MyComponent loggedIn={true} />;
