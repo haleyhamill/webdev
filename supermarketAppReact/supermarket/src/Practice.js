@@ -1,13 +1,11 @@
 import React from "react";
 
-function Notifications(props) {
-    const value = props.data.count - 1;
-    return <h3>You have {value} unread notifications.</h3>;
+function Navbar(props) {
+    if (!props.loggedIn) {
+        return <p>Register</p>
+    }
+    return <p>Welcome back!</p>
 }
 
-const notifications = {
-    count: 3
-};
-
-const element = <Notifications data={notifications} />;
-console.log(notifications);
+const element1 = <Navbar loggedIn={true} />
+const element2 = <Navbar loggedIn={false} />
