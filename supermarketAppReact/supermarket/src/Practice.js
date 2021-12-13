@@ -1,10 +1,13 @@
-const dimensions = [20, 5];
-const width = dimensions[0];
-const height = dimensions[1];
+/**
+ * @param {string[]} name
+ */
+ function printFullName(name) {
+    console.log(name);
+    const [first, last] = name;
+    return `${first} ${last}`;
+}
 
-const dimensions = [20, 5];
-const [width, height] = dimensions;
 
-
-const point = [3.3124, 14.52028, 10];
-const [lat, lng, elevation] = point;
+// Sample usage (do not modify)
+console.log(printFullName(["Sam", "Doe"]));
+console.log(printFullName(["John", "Malaga"]));
