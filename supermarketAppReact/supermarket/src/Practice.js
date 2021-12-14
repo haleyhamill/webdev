@@ -1,13 +1,7 @@
-/**
- * @param {string[]} name
- */
- function printFullName(name) {
-    console.log(name);
-    const [first, last] = name;
-    return `${first} ${last}`;
+import React, {useState} from "react";
+
+function Stopwatch() {
+    const [seconds, setSeconds] = useState(0);
+
+    return <div>{seconds}</div>
 }
-
-
-// Sample usage (do not modify)
-console.log(printFullName(["Sam", "Doe"]));
-console.log(printFullName(["John", "Malaga"]));
