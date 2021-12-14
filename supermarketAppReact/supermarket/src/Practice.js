@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import {render} from "react-dom";
 
-function App() {
-    return <button onClick={() => console.log("Hello World!")}>click me</button>;
+function Counter() {
+    const [count, setCount] = useState(0);
+    return (<>
+        <h2>{count} times clicked</h2>
+        <button onClick={() => setCount(count + 1)}>Add 1</button>
+    </>);
 }
 
-render(<App />, document.querySelector("#react-root"));
+render(<Counter />, document.querySelector("#react-root"));
