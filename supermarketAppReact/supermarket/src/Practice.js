@@ -1,14 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
+import {render} from "react-dom";
 
-function Stopwatch() {
-    //hooks have to be at the top
-    const [seconds, setSeconds] = useState(0);
-
-    return(
-        <>
-        <h2>{seconds}</h2>
-        {/*increment seconds state by 1 when you click on the button*/}
-        <button onClick={() => setSeconds(seconds + 1)}>Click to add 1</button>
-        </>
-    );
+function App() {
+    return <button onClick={() => console.log("Hello World!")}>click me</button>;
 }
+
+render(<App />, document.querySelector("#react-root"));
