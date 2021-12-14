@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+function getUser() {
+    const name = "Sam";
 
-function Limit() {
-    const [times, setTimes] = useState(60);
+    function getWelcomeMessage() {
+        return `Hello ${name}`;
+    }
 
-    return(
-        <>
-        <h2>{times} times remaining</h2>
-        <button onClick={() => setTimes(times - 1)}>Use Me</button>
-        </>
-    );
+    return {
+        name: name,
+        message: getWelcomeMessage()
+    }
 }
