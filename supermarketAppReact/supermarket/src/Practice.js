@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import {render} from "react-dom";
 
-function Counter() {
-    const [count, setCount] = useState(0);
-    return (<>
-        <h2>{count} times clicked</h2>
-        <button onClick={() => setCount(count + 1)}>Add 1</button>
-    </>);
+function Limit() {
+    const [times, setTimes] = useState(60);
+
+    return(
+        <>
+        <h2>{times} times remaining</h2>
+        <button onClick={() => setTimes(times - 1)}>Use Me</button>
+        </>
+    );
 }
-
-render(<Counter />, document.querySelector("#react-root"));
