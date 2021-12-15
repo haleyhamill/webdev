@@ -1,12 +1,5 @@
-const getUser = () => {
-    const name = "Sam";
+import React from "react";
 
-    const getWelcomeMessage = () => {
-        return `Hello ${name}`;
-    }
-
-    return {
-        name: name,
-        message: getWelcomeMessage()
-    }
+function App() {
+    return <input onKeyDown={() => console.log("Changed")} placeholder="Enter your name" />;
 }
