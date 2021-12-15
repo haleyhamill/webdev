@@ -1,18 +1,21 @@
-import React, {useState} from "react";
+import React from "react";
+import {render} from "react-dom";
+import NoPermission from "./NoPermission.js";
 
-function Counter(props) {
-    const [counter, setCounter] = useState(0);
-
-    function handleIncrementClick() {
-        if (props.enabled) {
-            setCounter(counter + 1);
-        }
+function Admin(props) {
+    if (props.userType === "admin") {
+        return( 
+        <div>
+            <h1>Welcome Admin</h1>
+            <p>The Admin portal allows you to manage all your items</p>
+        </div>)
+    } else {
+        return <NoPermission />
     }
-    
-    return(
-        <>
-        <h2>{counter} times clicked</h2>
-        <button onClick={handleIncrementClick}>Add 1</button>
-        </>
-    );
 }
+
+// Sample usage (do not modify)
+render(<>
+    <Admin userType="admin" />
+    <Admin userType="client" />
+</>, document.querySelector("#react-root"));
