@@ -1,7 +1,7 @@
-function getUser() {
+const getUser = () => {
     const name = "Sam";
 
-    function getWelcomeMessage() {
+    const getWelcomeMessage = () => {
         return `Hello ${name}`;
     }
 
