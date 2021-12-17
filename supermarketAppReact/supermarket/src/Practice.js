@@ -1,11 +1,19 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 function App() {
-    useEffect(() => {
-        setTimeout(() => {
-            console.log("This will run in 1 second");
-        }, 1000);
-    });
+  const [counter, setCounter] = useState(0);
 
-    return <h1>App</h1>;
+  useEffect(() => {
+    console.log("effect running");
+    return () => {
+      console.log("effect cleaning up");
+    }
+  })
+
+  return (
+    <>
+      <h2>{counter}</h2>
+      <button onClick={() => setCounter(prevCounter => prevCounter + 1)}>Add</button>
+    </>
+  );
 }
