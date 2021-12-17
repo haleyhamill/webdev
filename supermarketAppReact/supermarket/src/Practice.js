@@ -1,21 +1,11 @@
-import React, {useState, useEffect} from "react";
-import {render} from "react-dom";
+import React, {useEffect} from "react";
 
-function Counter() {
-    const [times, setTimes] = useState(0);
-
+function App() {
     useEffect(() => {
-        document.title = `${times} times`
-    })
+        setTimeout(() => {
+            console.log("This will run in 1 second");
+        }, 1000);
+    });
 
-    function handleButtonClick() {
-         setTimes(prevTimes => prevTimes + 1);
-    }
-
-    return (<>
-        <h2>{times} times clicked</h2>
-        <button onClick={handleButtonClick}>Add 1</button>
-    </>);
+    return <h1>App</h1>;
 }
-
-render(<Counter />, document.querySelector("#react-root"));
