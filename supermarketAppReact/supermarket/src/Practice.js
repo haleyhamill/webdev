@@ -1,25 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 import {render} from "react-dom";
 
 function App() {
-    const [counter, setCounter] = useState(0);
+    // To give you a way to re-render the component
+    const [random, setRandom] = useState(Math.random());
 
     useEffect(() => {
-        document.title = "Welcome";
-        const timerId = setTimeout(() => {
-            document.title = "Still there?";
-        }, 1000);
-
-        return(() => {
-            clearTimeout(timerId)
-        });
-    });
+        console.log("Done mounting")
+    }, [])
 
     return (
-    <>
-        <h2>{counter}</h2>
-        <button onClick={() => setCounter(prevCounter => prevCounter + 1)}>Add</button>
-    </>
+        <button onClick={() => setRandom(Math.random())}>Re-render component</button>
     );
 }
 
