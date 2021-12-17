@@ -1,17 +1,42 @@
 import React, {useState, useEffect} from "react";
 import {render} from "react-dom";
 
-function App() {
-    // To give you a way to re-render the component
-    const [random, setRandom] = useState(Math.random());
+function Countdown() {
+    const [count, setCount] = useState(5);
+    const [lives, setLives] = useState(3);
 
     useEffect(() => {
-        console.log("Done mounting")
-    }, [])
+        console.log("first render");
 
-    return (
-        <button onClick={() => setRandom(Math.random())}>Re-render component</button>
-    );
+        return () => { console.log("will be removed") }
+    }, []);
+
+    useEffect(() => {
+        console.log("count changed")
+    }, [count]);
+
+    useEffect(() => {
+        console.log("lives changed")
+    }, [lives]);
+
+    useEffect(() => {
+        console.log("count or lives changed")
+    }, [count, lives]);
+
+    function handleCountdownClick() {
+        if (count > 0){
+            setCount(count - 1);
+        }else if (count === 0) {
+            setCount(5);
+            setLives(lives - 1);
+        }
+    }
+
+    return <>
+        <h2>Attempts remaining: {count}</h2>
+        <button onClick={handleCountdownClick}>Count down</button>
+        <h3>Lives remaining: {lives}</h3>
+    </>;
 }
 
-render(<App />, document.querySelector("#react-root"));
+render(<Countdown />, document.querySelector("#react-root"));
