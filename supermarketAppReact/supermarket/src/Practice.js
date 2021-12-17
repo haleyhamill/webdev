@@ -1,21 +1,15 @@
-import React, {useState} from "react";
-import {render} from "react-dom";
+import React, {useState, useEffect} from "react";
 
-function Counter(props) {
-    const [count, setCount] = useState(5);
+function Counter() {
+    const [counter, setCounter] = useState(0);
 
-    function handleCounterClick() {
-        setCount(count - props.enabled)
+    useEffect(() => {
+        document.title = `Counter is ${counter}`;
+    });
+
+    function handleButtonClick() {
+        setCounter(prevCounter => prevCounter + 1);
     }
-
-    return <>
-        <h2>Attempts remaining: {count}</h2>
-        <button onClick={handleCounterClick}>Count down</button>
-    </>;
+    
+    return <button onClick={handleButtonClick}>Click me {counter}</button>
 }
-
-// Sample usage (do not modify)
-render(<>
-    <Counter enabled={true} />
-    <Counter enabled={false} />
-</>, document.querySelector("#react-root"));
