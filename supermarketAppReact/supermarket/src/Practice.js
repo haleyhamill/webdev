@@ -1,15 +1,21 @@
 import React, {useState, useEffect} from "react";
+import {render} from "react-dom";
 
 function Counter() {
-    const [counter, setCounter] = useState(0);
+    const [times, setTimes] = useState(0);
 
     useEffect(() => {
-        document.title = `Counter is ${counter}`;
-    });
+        document.title = `${times} times`
+    })
 
     function handleButtonClick() {
-        setCounter(prevCounter => prevCounter + 1);
+         setTimes(prevTimes => prevTimes + 1);
     }
-    
-    return <button onClick={handleButtonClick}>Click me {counter}</button>
+
+    return (<>
+        <h2>{times} times clicked</h2>
+        <button onClick={handleButtonClick}>Add 1</button>
+    </>);
 }
+
+render(<Counter />, document.querySelector("#react-root"));
