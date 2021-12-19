@@ -5,8 +5,16 @@ function Clock() {
     const [date, setDate] = useState(new Date());
 
     useEffect(() => {
-        setInterval(() => setDate(new Date()), 1000)
-    })
+        const intervalId = setInterval(() => {
+            setDate(new Date());
+        }, 1000);
+
+        return () => {
+            clearInterval(intervalId);
+        }
+    }, []);
 
     return <h2>{date.toLocaleTimeString()}</h2>;
 }
+
+render(<Clock />, document.querySelector("#react-root"));
