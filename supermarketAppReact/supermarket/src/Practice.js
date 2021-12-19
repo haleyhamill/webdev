@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import {render} from "react-dom";
 
 function Clock() {
-    return <h2>time here</h2>;
+    const [date, setDate] = useState(new Date());
+
+    return <h2>{date.toLocaleTimeString()}</h2>;
 }
 
 render(<Clock />, document.querySelector("#react-root"));
