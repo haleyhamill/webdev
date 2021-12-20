@@ -1,6 +1,8 @@
 function Stopwatch() {
     const [counter, setCounter] = useState(0);
+    const [running, setRunning] = useState(false);
 
+    if (running) {
     useEffect(() => {
         let timerId = setTimeout(() => {
             setCounter(prevCounter => prevCounter + 1);
@@ -8,10 +10,10 @@ function Stopwatch() {
         return () => {
             clearTimeout(timerId)
         }
-    });
+    })};
 
     function handleButtonClick() {
-        // TODO
+        setRunning(prevValue => !prevValue)
     }
 
     return <>
