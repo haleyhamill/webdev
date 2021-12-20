@@ -1,28 +1,22 @@
-import React, {useState, useEffect} from "react";
-import {render} from "react-dom";
+import React from "react";
 
 function App() {
-  const [users, setUsers] = useState();
+    const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    fetch("https://react-tutorial-demo.firebaseio.com/users.json")
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        setUsers(data);
-    });
-  }, []);
+    function handleButtonClick() {
+        setIsLoading(true);
+        fetch(URL)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        .finally(() => {
+            setIsLoading(false)
+        })
+    }
 
-  if (!users) {
-    return null
-  }
-
-  return <>
-    <h1>Users ({users.length})</h1>
-    <ul>
-        {users.map(user => <li key={user.id}>{user.name}</li>)}
-    </ul>
-  </>
+    return <button onClick={handleButtonClick}>Load data</button>;
 }
-
-render(<App />, document.querySelector("#react-root"));
