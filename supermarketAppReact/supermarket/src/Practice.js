@@ -1,20 +1,21 @@
-import React, {useState, useEffect} from "react";
-import {render} from "react-dom";
-
-function Clock() {
-    const [date, setDate] = useState(new Date());
+function Stopwatch() {
+    const [counter, setCounter] = useState(0);
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            setDate(new Date());
+        let timerId = setTimeout(() => {
+            setCounter(prevCounter => prevCounter + 1);
         }, 1000);
-
         return () => {
-            clearInterval(intervalId);
+            clearTimeout(timerId)
         }
-    }, []);
+    });
 
-    return <h2>{date.toLocaleTimeString()}</h2>;
+    function handleButtonClick() {
+        // TODO
+    }
+
+    return <>
+        <h2>{counter}</h2>
+        <button onClick={handleButtonClick}>Start / Pause</button>
+    </>
 }
-
-render(<Clock />, document.querySelector("#react-root"));
