@@ -1,29 +1,31 @@
 import React, {useState} from "react";
-import {render} from "react-dom";
 
-function App() {
-    const [users, setUsers] = useState();
-    const [isLoading, setIsLoading] = useState(false);
+export default function Product(props) {
+    const [count, setCount] = useState(0);
 
-    function handleButtonClick() {
-        setIsLoading(true)
-        fetch(`https://react-tutorial-demo.firebaseio.com/users.json`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            setUsers(data)
-        })
-        .catch(error => console.log(error))
-        .finally(() => setIsLoading(false))
+    const {details} = props;
+
+    function handleIncrementClick() {
+        setCount(count + 1);
+    }
+    function handleDecrementClick() {
+        if (count > 0){
+            setCount(count - 1);
+        }
     }
 
-    return (<>
-        <button onClick={handleButtonClick} disabled={isLoading}>Load users</button>
-        <h1>Users</h1>
-        <ul>
-            {users && users.map(user => <li key={user.id}>{user.name}</li>)}
-        </ul>
-    </>);
-}
+    console.log(details);
 
-render(<App />, document.querySelector("#react-root"));
+    return <div className="product">
+        <img width="50" src={details.image} alt="{details.title}" />
+        <div className="product-info">
+            <h2>{details.name}</h2>
+            <p>{details.description}</p>
+        </div>
+        <div className="product-buttons">
+            <button className="product-sub" disabled={count === 0} onClick={handleDecrementClick}>-</button>
+            <h3 className="product-count">{count ? count : ""}</h3>
+            <button className="product-add" onClick={handleIncrementClick}>+</button>
+        </div>
+    </div>
+}
