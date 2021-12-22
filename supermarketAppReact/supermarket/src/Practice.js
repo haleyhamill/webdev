@@ -1,31 +1,24 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import Product from "./Product.js";
 
-export default function Product(props) {
-    const [count, setCount] = useState(0);
+export default function StoreFront() {
+    const [products, setProducts] = useState();
 
-    const {details} = props;
+    useEffect(() => {
+        try { 
+            (async () => {
+            const response = await fetch("https://react-tutorial-demo.firebaseio.com/products.json")
+            const data = await response.json()
+            if (data) {
+                console.log(data)
+                setProducts(data)
+            }
+        })() }
+        catch(error) { console.error(error) }
+    }, []);
 
-    function handleIncrementClick() {
-        setCount(count + 1);
-    }
-    function handleDecrementClick() {
-        if (count > 0){
-            setCount(count - 1);
-        }
-    }
-
-    console.log(details);
-
-    return <div className="product">
-        <img width="50" src={details.image} alt="{details.title}" />
-        <div className="product-info">
-            <h2>{details.name}</h2>
-            <p>{details.description}</p>
-        </div>
-        <div className="product-buttons">
-            <button className="product-sub" disabled={count === 0} onClick={handleDecrementClick}>-</button>
-            <h3 className="product-count">{count ? count : ""}</h3>
-            <button className="product-add" onClick={handleIncrementClick}>+</button>
-        </div>
-    </div>
+    return(
+        <div className="store-front">
+            { products && products.map(product => <Product key={product.id} details={product}/>) }
+        </div>);
 }
