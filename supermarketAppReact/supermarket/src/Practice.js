@@ -1,33 +1,28 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {render} from "react-dom";
 
-function GradeForm() {
-    const [grade, setGrade] = useState(0);
+function CurrencySelector() {
+    const [currency, setCurrency] = useState("");
 
-    function handleFormSubmit(event) {
-        event.preventDefault();
+    useEffect(() => {
+        if (currency) {
+            console.log(currency);
+        }
+    }, [currency]);
 
-        fetch('https://api.learnjavascript.online/demo/react/grades', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",   
-            },
-            body: JSON.stringify({grade: grade})
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            setGrade(data)
-        })
-        .catch(error => console.log(error))
+    function handleCurrencyChange(event) {
+        setCurrency(event.target.value);
     }
 
-    return (
-        <form onSubmit={handleFormSubmit}>
-            <input type="number" value={grade} name="grade" onChange={event => setGrade(event.target.value)} placeholder="Enter the grade" />
-            <input type="submit" />
-        </form>
-    );
+    return <>
+        <h3>Select currency</h3>
+        <select onChange={handleCurrencyChange}>
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+            <option value="cad">CAD</option>
+        </select>
+        <h1>{currency}</h1>
+    </>;
 }
 
-render(<GradeForm />, document.querySelector("#react-root"));
+render(<CurrencySelector />, document.querySelector("#react-root"));
