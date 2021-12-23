@@ -7,6 +7,19 @@ function CurrencySelector() {
     useEffect(() => {
         if (currency) {
             console.log(currency);
+        fetch('https://react-tutorial-demo.firebaseio.com/preferences.json', {
+            method: "PUT",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({currency: currency})
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            setCurrency(data)
+        })
+        .catch(error => console.log(error))
         }
     }, [currency]);
 
