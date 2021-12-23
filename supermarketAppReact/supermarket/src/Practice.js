@@ -1,28 +1,33 @@
 import React, {useState} from "react";
+import {render} from "react-dom";
 
-function App() {
-    const [number, setNumber] = useState(0);
+function GradeForm() {
+    const [grade, setGrade] = useState(0);
 
     function handleFormSubmit(event) {
         event.preventDefault();
 
-        fetch("https://react-tutorial-demo.firebaseio.com/grades.json", {
+        fetch('https://api.learnjavascript.online/demo/react/grades', {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",   
             },
-            body: JSON.stringify({grade: number})
+            body: JSON.stringify({grade: grade})
         })
         .then(response => response.json())
         .then(data => {
-            console.log("Grade added");
-            console.log(data);
-        });
+            console.log(data)
+            setGrade(data)
+        })
+        .catch(error => console.log(error))
     }
 
-    return <form onSubmit={handleFormSubmit}>
-        <input type="number" value={number} name="grade" onChange={event => setNumber(event.target.value)} placeholder="Enter the grade" />
-        <input type="submit" />
-    </form>
-    ;
+    return (
+        <form onSubmit={handleFormSubmit}>
+            <input type="number" value={grade} name="grade" onChange={event => setGrade(event.target.value)} placeholder="Enter the grade" />
+            <input type="submit" />
+        </form>
+    );
 }
+
+render(<GradeForm />, document.querySelector("#react-root"));
