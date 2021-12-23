@@ -4,7 +4,7 @@ import {render} from "react-dom";
 function useWelcomeGreeting() {
     useEffect(() => {
         console.log("Welcome to my app")
-    }) 
+    }, [])
 }
 
 function App() {
