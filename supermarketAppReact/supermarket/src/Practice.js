@@ -1,41 +1,61 @@
 import React, {useState, useEffect} from "react";
-import {render} from "react-dom";
+import ProductsList from "./ProductsList.js";
+import AddProductForm from "./AddProductForm.js";
 
-function CurrencySelector() {
-    const [currency, setCurrency] = useState("");
+export default function StoreFront() {
+    const [products, setProducts] = useState([]);
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [validation, setValidation] = useState("");
 
-    useEffect(() => {
-        if (currency) {
-            console.log(currency);
-        fetch('https://react-tutorial-demo.firebaseio.com/preferences.json', {
-            method: "PUT",
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            body: JSON.stringify({currency: currency})
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            setCurrency(data)
-        })
-        .catch(error => console.log(error))
+    function handleFormSubmit(event) {
+        event.preventDefault();
+
+        if (!name) {
+            setValidation("Please enter a name");
+            return ;
         }
-    }, [currency]);
+        if (!description){
+            setValidation("Please enter a description");
+            return ;
+        }
+        setProducts([...products, {
+            id: products.length + 1,
+            name: name,
+            description, description
+        }]);
+        setName("");
+        setDescription("");
+        setValidation("");
 
-    function handleCurrencyChange(event) {
-        setCurrency(event.target.value);
+            fetch('https://api.learnjavascript.online/demo/react/admin/products', {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({name: name, description: description})
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
+
+    function handleNameChange(event) {
+        setName(event.target.value);
+    }
+
+    function handleDescriptionChange(event) {
+        setDescription(event.target.value);
+    }
+
+    function handleDeleteClick(id) {
+        setProducts(products.filter(product => product.id !== id));
     }
 
     return <>
-        <h3>Select currency</h3>
-        <select onChange={handleCurrencyChange}>
-            <option value="usd">USD</option>
-            <option value="eur">EUR</option>
-            <option value="cad">CAD</option>
-        </select>
-        <h1>{currency}</h1>
+        <AddProductForm name={name} description={description} validation={validation} onNameChange={handleNameChange} onDescriptionChange={handleDescriptionChange} onFormSubmit={handleFormSubmit} />
+        <div>{products.length === 0 && <p>Add your first product</p>}</div>
+        <ProductsList products={products} onDeleteClick={handleDeleteClick} />
     </>;
 }
-
-render(<CurrencySelector />, document.querySelector("#react-root"));
