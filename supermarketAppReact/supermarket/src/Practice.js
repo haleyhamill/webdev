@@ -1,25 +1,14 @@
-import React, {useState} from "react";
-import {render} from "react-dom";
-import useDocumentTitle from "./useDocumentTitle.js";
+import {useLayoutEffect} from "react";
 
-function App() {
-    const [count, setCount] = useState(0);
+export default function useMapboxMap(container) {
+    mapboxgl.accessToken = "pk.eyJ1IjoieG94b3hveG94byIsImEiOiJja3ZjcmFwZW05aHloMm5waDVxeTc4dW5iIn0.JQpWtubaYBPXqL2aJGbAzA"
 
-    function handleIncrementClick() {
-        setCount(prevCount => prevCount + 1);
-    }
-
-    function handleDecrementClick() {
-        setCount(prevCount => prevCount - 1);
-    }
-
-    useDocumentTitle(`${count} products in your shopping list`)
-
-    return <>
-        <h2>{count}</h2>
-        <button onClick={handleIncrementClick}>+</button>
-        <button onClick={handleDecrementClick}>-</button>
-    </>;
+    useLayoutEffect(() => {
+        const map = new mapboxgl.Map({
+            container: container,
+            style: 'mapbox://styles/mapbox/dark-v10',
+            center:  [ 12.567898, 55.67583 ],
+            zoom: 9
+        });
+    }, []);
 }
-
-render(<App />, document.querySelector("#react-root"));
