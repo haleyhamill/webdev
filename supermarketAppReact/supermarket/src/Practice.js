@@ -1,9 +1,19 @@
 export default function useFetch(baseUrl) {
     function get(url) {
-        const data = fetch(baseUrl + url)
-            .then(response => response.json())
-        return data
+        return fetch(baseUrl + url)
+                .then(response => response.json());
     }
 
-    return { get }
+    function post(url, body) {
+        return fetch(baseUrl + url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        .then(response => response.json())
+    }
+
+    return { get, post };
 };
