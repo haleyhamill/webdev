@@ -1,19 +1,24 @@
-export default function useFetch(baseUrl) {
-    function get(url) {
-        return fetch(baseUrl + url)
-                .then(response => response.json());
-    }
+import React, {useState, useEffect} from "react";
+import {render} from "react-dom";
+import useFetch from "./useFetch.js";
 
-    function post(url, body) {
-        return fetch(baseUrl + url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(body)
+function App() {
+    const [users, setUsers] = useState();
+    const {get, loading} = useFetch("https://react-tutorial-demo.firebaseio.com/")
+    useEffect(() => {
+        get("users.json").then(data => {
+            console.log(data)
+            setUsers(data)
         })
-        .then(response => response.json())
-    }
+        .catch(error => console.log(error))
+    }, []);
 
-    return { get, post };
-};
+  return <>
+        <h1>Users</h1>
+        <ul>
+            {users && users.map(user => <li key={user.id}>{user.name}</li>)}
+        </ul>
+    </>;
+}
+
+render(<App />, document.querySelector("#react-root"));
