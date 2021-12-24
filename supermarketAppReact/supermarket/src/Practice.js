@@ -1,17 +1,23 @@
 import React, {useRef, useEffect} from "react";
 import {render} from "react-dom";
 
-function Form() {
-    const inputRef = useRef();
+function VideoPlayer() {
+    const videoRef = useRef()
 
-    useEffect(() => {
-        inputRef.current.focus()
-    }, [])
+    function handlePlayClick() {
+        videoRef.current.play()
+    }
 
-    return (<form>
-        <h2>Welcome</h2>
-        <input ref={inputRef} type="text" placeholder="Enter your name" />
-    </form>);
+    function handlePauseClick() {
+        videoRef.current.pause()
+    }
+
+    return (<>
+        <h2>Video player</h2>
+        <button onClick={handlePlayClick}>Play</button>
+        <button onClick={handlePauseClick}>Pause</button>
+        <video ref={videoRef} width="300" controls src="https://res.cloudinary.com/dbfn5lnvx/video/upload/v1599125933/react-tutorial/ref-video-player-challenge.mp4" />
+    </>);
 }
 
-render(<Form/>, document.querySelector("#react-root"));
+render(<VideoPlayer/>, document.querySelector("#react-root"));
