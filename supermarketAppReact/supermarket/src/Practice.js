@@ -1,30 +1,15 @@
-import {useState} from "react";
-
-export default function useProductCounter() {
-    const [counter, setCounter] = useState(0);
-
-    function increment() {
-        setCounter(prevCounter => prevCounter + 1);
-    }
-
-    function decrement() {
-        setCounter(prevCounter => {
-            if (prevCounter > 0) {
-                return prevCounter - 1;
-            }
-            return 0;
-        });
-    }
-
-    return {counter, increment, decrement};
-}
+import React, {useState} from "react";
+import {render} from "react-dom";
+import useProductCounter from "./useProductCounter.js";
 
 function App() {
-    const {counter, increment, decrement} = useProductCounter();
+    const {count, increment, decrement} = useProductCounter();
 
     return <>
-        <h2>{counter}</h2>
+        <h2>{count}</h2>
         <button onClick={increment}>+</button>
         <button onClick={decrement}>-</button>
     </>;
 }
+
+render(<App />, document.querySelector("#react-root"));
