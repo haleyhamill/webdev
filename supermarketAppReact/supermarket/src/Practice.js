@@ -1,25 +1,23 @@
-import React, {useEffect, useState} from "react";
-import useFetch from "./useFetch.js";
+import React, {useState} from "react";
 import {render} from "react-dom";
-import Loader from "./Loader.js";
+import useFetch from "./useFetch.js";
 
-function App() {
-  const [users, setUsers] = useState();
-  const {get, loading} = useFetch("https://react-tutorial-demo.firebaseio.com/");
+function GradeForm() {
+    const [grade, setGrade] = useState(0);
+    const {post} = useFetch("https://api.learnjavascript.online/demo/react/")
 
-    useEffect(() => {
-        get("users.json").then(data => {
-            setUsers(data);
-        }).catch(error => console.error(error));
-    }, []);
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        post("grades", {"grade": grade});
+        setGrade(0);
+    }
 
-    return <>
-        <h1>Users</h1>
-        {loading && <Loader />}
-        <ul>
-            {users && users.map(user => <li key={user.id}>{user.name}</li>)}
-        </ul>
-    </>;
+    return (
+        <form onSubmit={handleFormSubmit}>
+            <input type="number" value={grade} name="grade" onChange={event => setGrade(event.target.value)} placeholder="Enter the grade" />
+            <input type="submit" />
+        </form>
+    );
 }
 
-render(<App />, document.querySelector("#react-root"));
+render(<GradeForm />, document.querySelector("#react-root"));
