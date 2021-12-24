@@ -1,14 +1,22 @@
-import {useLayoutEffect} from "react";
+import {useState} from "react";
 
-export default function useMapboxMap(container) {
-    mapboxgl.accessToken = "pk.eyJ1IjoieG94b3hveG94byIsImEiOiJja3ZjcmFwZW05aHloMm5waDVxeTc4dW5iIn0.JQpWtubaYBPXqL2aJGbAzA"
+export default function useProductCounter() {
+    const [counter, setCounter] = useState(0);
 
-    useLayoutEffect(() => {
-        const map = new mapboxgl.Map({
-            container: container,
-            style: 'mapbox://styles/mapbox/dark-v10',
-            center:  [ 12.567898, 55.67583 ],
-            zoom: 9
+    function increment() {
+        setCounter(prevCounter => prevCounter + 1);
+    }
+
+    function decrement() {
+        setCounter(prevCounter => {
+            if (prevCounter > 0) {
+                return prevCounter - 1;
+            }
+            return 0;
         });
-    }, []);
+    }
+
+    return {counter, increment, decrement};
 }
+
+const {counter, increment, decrement} = useProductCounter();
