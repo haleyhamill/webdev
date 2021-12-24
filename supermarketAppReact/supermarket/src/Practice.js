@@ -19,4 +19,12 @@ export default function useProductCounter() {
     return {counter, increment, decrement};
 }
 
-const {counter, increment, decrement} = useProductCounter();
+function App() {
+    const {counter, increment, decrement} = useProductCounter();
+
+    return <>
+        <h2>{counter}</h2>
+        <button onClick={increment}>+</button>
+        <button onClick={decrement}>-</button>
+    </>;
+}
