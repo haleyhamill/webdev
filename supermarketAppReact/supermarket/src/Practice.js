@@ -1,31 +1,33 @@
 import React from "react";
-import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
+import {BrowserRouter, Link, Switch, Route} from "react-router-dom";
 import {render} from "react-dom";
-import About from "./About.js";
 import Home from "./Home.js";
+import Contact from "./Contact.js";
 
 function App() {
-  return (
-    <BrowserRouter>
+  return (<BrowserRouter>
         <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
         </nav>
 
-        <Switch>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <main>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/contact">
+                <Contact />
+              </Route>
+            </Switch>
+
+        </main>
     </BrowserRouter>
   );
 }
