@@ -1,44 +1,18 @@
-import React, {useEffect} from "react";
-import {Switch, Route, Link, useLocation} from "react-router-dom";
-import Landing from "./Landing.js";
-import Products from "./Products.js";
-import Team from "./Team.js";
+import React from "react";
+import {NavLink} from "react-router-dom";
 
-export default function Home() {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.log(location.pathname);
-  }, [location]);
-
-    return (<>
-        <nav>
-          <h2>You are currently viewing: {location.pathname}</h2>
-          <ul>
+export default function Nav() {
+    return <nav>
+        <ul>
             <li>
-              <Link to="/">Home</Link>
+                <NavLink activeClassName="nav-active" exact to="/">Home</NavLink>
             </li>
             <li>
-              <Link to="/products">Products</Link>
+                <NavLink activeClassName="nav-active" exact to="/about">About</NavLink>
             </li>
             <li>
-              <Link to="/team">Team</Link>
+                <NavLink activeClassName="nav-active" to="/products">Products</NavLink>
             </li>
-          </ul>
-        </nav>
-
-        <main>
-            <Switch>
-                <Route exact path="/">
-                    <Landing />
-                </Route>
-                <Route exact path="/products">
-                    <Products />
-                </Route>
-                <Route exact path="/team">
-                    <Team />
-                </Route>
-            </Switch>
-        </main>
-    </>);
+        </ul>
+    </nav>
 }
