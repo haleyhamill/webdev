@@ -35,7 +35,13 @@ export default function Product(props) {
       <div className="product-checkout">
         <div>
           {quantity > 0 && (
-            <Button outline onClick={() => props.onProductDelete(details.id)} className="product-delete">x</Button>
+            <Button
+              outline
+              onClick={() => props.onProductDelete(details.id)}
+              className="product-delete"
+            >
+              x
+            </Button>
           )}
         </div>
         <Button outline onClick={() => props.onProductAdd(details)}>
