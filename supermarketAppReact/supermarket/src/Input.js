@@ -11,9 +11,9 @@ export default function Input(props) {
     }, className);
     
     return(<>
-    <label class="label">
+    <label className="label">
     {props.placeholder}
-        {props.required && <span class="input-required">*</span>}
+        {props.required && <span className="input-required">*</span>}
     <div>
         <input required={props.required} className={classNames} type={types} {...rest}/>
     </div>

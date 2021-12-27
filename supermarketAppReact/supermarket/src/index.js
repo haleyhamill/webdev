@@ -1,17 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import {render} from "react-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Navbar from "./Navbar.js";
+import Home from "./Home.js";
+import About from "./About.js";
+import Products from "./Products.js";
+import ProductDetails from "./ProductDetails.js";
+import Cart from "./Cart.js";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+function App() {
+  return (
+  <>
+  <BrowserRouter>
+    <Navbar />
+    <div className="container">
+      <Switch>
+        <Route exact path="/">
+          <Home/>
+        </Route> 
+        <Route exact path="/about/">
+          <About/>
+        </Route>
+        <Route exact path="/products/" >
+          <Products/>
+        </Route>
+        <Route exact path="/cart/" >
+          <Cart/>
+        </Route>
+        <Route path="/products/:id/">
+          <ProductDetails/>
+        </Route>
+      </Switch>
+    </div>
+  </BrowserRouter>
+  </>);
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+render(<App />, document.getElementById("root"));
