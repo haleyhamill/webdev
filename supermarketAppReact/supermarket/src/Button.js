@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import './index.css';
 
 export default function Button(props) {
   const { children, outline, className, ...rest } = props;
