@@ -25,10 +25,10 @@ export default function Products(props) {
         {loading && <Loader />}
         {products.map((product) => {
           return (
-             <Product
+            <Product
+              cart={props.cart}
               key={product.id}
               details={product}
-              cart={props.cart}
               onProductAdd={props.onProductAdd}
               onProductDelete={props.onProductDelete}
             ></Product>
