@@ -1,84 +1,104 @@
-import './index.css';
-import React, { useState, useEffect } from "react";
-import { render } from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Navbar from "./Navbar.js";
-import Home from "./Home.js";
-import About from "./About.js";
-import Products from "./Products.js";
-import ProductDetails from "./ProductDetails.js";
-import Cart from "./Cart.js";
+import React, {useState} from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import Input from "./Input.js";
+import Button from "./Button.js";
 
-function App() {
-  const [cart, setCart] = useState([]);
+const stripeLoadedPromise = loadStripe('pk_test_51HsqkCGuhXEITAut89vmc4jtjYd7XPs8hWfo2XPef15MFqI8rCFc8NqQU9WutlUBsd8kmNqHBeEmSrdMMpeEEyfT00KzeVdate');
 
-  useEffect(() => {
-    // to visualize the cart in the console every time in changes
-    // you can also use React dev tools
-    console.log(cart);
-  }, [cart]);
+export default function Cart({ cart }) {
+  const [email, setEmail] = useState("")
+  const totalPrice = cart.reduce(
+    (total, product) => total + product.price * product.quantity,
+    0
+  );
 
-  function handleProductAdd(newProduct) {
-    // check if item exists
-    const existingProduct = cart.find(
-      (product) => product.id === newProduct.id
-    );
-    if (existingProduct) {
-      // increase quantity
-      const updatedCart = cart.map((product) => {
-        if (product.id === newProduct.id) {
-          return {
-            ...product,
-            quantity: product.quantity + 1,
-          };
-        }
-        return product;
-      });
-      setCart(updatedCart);
-    } else {
-      // product is new to the cart
-      setCart([
-        ...cart,
-        {
-          ...newProduct,
-          quantity: 1,
-        },
-      ]);
+  const lineItems = cart.map((product) => {
+    return {
+      price: product.price_id, quantity: product.quantity,
     }
-  }
+  })
 
-  function handleProductDelete(id) {
-    const updatedCart = cart.filter((product) => product.id !== id);
-    setCart(updatedCart);
-  }
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    stripeLoadedPromise.then(stripe => {
+      stripe.redirectToCheckout({
+        lineItems: lineItems,
+        mode: 'payment',
+        successUrl: 'https://react-tutorial.app/app.html',
+        cancelUrl: 'https://react-tutorial.app/app.html',
+        customerEmail: email,
+      }).then(response => {
+        // this will only log if the redirect did not work
+        console.log(response.error);
+      }).catch(error => {
+        // wrong API key? you will see the error message here
+        console.log(error);
+      });
+    });
+  };  
 
   return (
-    <BrowserRouter>
-      <Navbar cart={cart} />
-      <div className="container">
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/products">
-            <Products
-              cart={cart}
-              onProductAdd={handleProductAdd}
-              onProductDelete={handleProductDelete}
-            />
-          </Route>
-          <Route path="/products/:id">
-            <ProductDetails onProductAdd={handleProductAdd} />
-          </Route>
-          <Route exact path="/cart">
-            <Cart cart={cart} />
-          </Route>
-        </Switch>
+    <div className="cart-layout">
+      <div>
+        <h1>Your Cart</h1>
+        {cart.length === 0 && (
+          <p>You have not added any product to your cart yet.</p>
+        )}
+        {cart.length > 0 && (
+          <>
+            <table className="table table-cart">
+              <thead>
+                <tr>
+                  <th width="25%" className="th-product">
+                    Product
+                  </th>
+                  <th width="20%">Unit price</th>
+                  <th width="10%">Quanity</th>
+                  <th width="25%">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cart.map((product) => {
+                  return (
+                    <tr key={product.id}>
+                      <td>
+                        <img
+                          src={product.image}
+                          width="30"
+                          height="30"
+                          alt=""
+                        />{" "}
+                        {product.name}
+                      </td>
+                      <td>${product.price}</td>
+                      <td>{product.quantity}</td>
+                      <td>
+                        <strong>${product.price * product.quantity}</strong>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th colSpan="2"></th>
+                  <th className="cart-highlight">Total</th>
+                  <th className="cart-highlight">${totalPrice}</th>
+                </tr>
+              </tfoot>
+            </table>
+            <form onSubmit={handleFormSubmit} className="pay-form">
+  <p>
+    Enter your email and then click on pay and your products will be
+    delivered to you on the same day!
+  </p>
+  <Input autocomplete="email" placeholder="Email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+  <Button type="submit">Pay</Button>
+</form>
+          </>
+        )}
       </div>
-    </BrowserRouter>
+    </div>
   );
 }
 
