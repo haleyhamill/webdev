@@ -1,8 +1,15 @@
 import React from "react";
+import Button from "./Button.js";
 
 export default function ProductDetailInfo(props) {
-  return <><p>
-  {props.description} sold at <strong>${props.price}</strong> per piece.
-</p>
-<button>${props.price}</button></>;
+  const {product, onProductAdd} = props;
+  return (
+    <>
+      <p>
+        {product.description} sold at <strong>${product.price}</strong> per
+        piece.
+      </p>
+      <Button onClick={() => onProductAdd(product)}>${product.price}</Button>
+    </>
+  );
 }
