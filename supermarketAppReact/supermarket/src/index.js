@@ -1,7 +1,7 @@
 import './index.css';
-import React from "react";
-import {render} from "react-dom";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { render } from "react-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "./Navbar.js";
 import Home from "./Home.js";
 import About from "./About.js";
@@ -10,31 +10,76 @@ import ProductDetails from "./ProductDetails.js";
 import Cart from "./Cart.js";
 
 function App() {
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    // to visualize the cart in the console every time in changes
+    // you can also use React dev tools
+    console.log(cart);
+  }, [cart]);
+
+  function handleProductAdd(newProduct) {
+    // check if item exists
+    const existingProduct = cart.find(
+      (product) => product.id === newProduct.id
+    );
+    if (existingProduct) {
+      // increase quantity
+      const updatedCart = cart.map((product) => {
+        if (product.id === newProduct.id) {
+          return {
+            ...product,
+            quantity: product.quantity + 1,
+          };
+        }
+        return product;
+      });
+      setCart(updatedCart);
+    } else {
+      // product is new to the cart
+      setCart([
+        ...cart,
+        {
+          ...newProduct,
+          quantity: 1,
+        },
+      ]);
+    }
+  }
+
+  function handleProductDelete(id) {
+    const updatedCart = cart.filter((product) => product.id !== id);
+    setCart(updatedCart);
+  }
+
   return (
-  <>
-  <BrowserRouter>
-    <Navbar />
-    <div className="container">
-      <Switch>
-        <Route exact path="/">
-          <Home/>
-        </Route> 
-        <Route exact path="/about/">
-          <About/>
-        </Route>
-        <Route exact path="/products/" >
-          <Products/>
-        </Route>
-        <Route exact path="/cart/" >
-          <Cart/>
-        </Route>
-        <Route path="/products/:id/">
-          <ProductDetails/>
-        </Route>
-      </Switch>
-    </div>
-  </BrowserRouter>
-  </>);
+    <BrowserRouter>
+      <Navbar cart={cart} />
+      <div className="container">
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/products">
+            <Products
+              cart={cart}
+              onProductAdd={handleProductAdd}
+              onProductDelete={handleProductDelete}
+            />
+          </Route>
+          <Route path="/products/:id">
+            <ProductDetails onProductAdd={handleProductAdd} />
+          </Route>
+          <Route exact path="/cart">
+            <Cart cart={cart} />
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
 }
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.querySelector("#root"));
