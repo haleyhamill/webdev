@@ -15,10 +15,9 @@ if (prefersLight) {
   document.documentElement.classList.toggle("light-theme");
 }
 
-function getNameLength(name) {
-  return name.length;
-}
-
-function getAddressLength(address) {
-  return address.length;
-}
+let grades = [10, 20, 9];
+let sum = 0;
+grades.forEach(function (grade) {
+  sum = sum + grade;
+});
+let average = sum / grades.length;
