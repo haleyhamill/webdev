@@ -18,3 +18,7 @@ if (prefersLight) {
 function getNameLength(name) {
   return name.length;
 }
+
+function getAddressLength(address) {
+  return address.length;
+}
