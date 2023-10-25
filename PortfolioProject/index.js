@@ -14,3 +14,7 @@ const prefersLight = window.matchMedia(
 if (prefersLight) {
   document.documentElement.classList.toggle("light-theme");
 }
+
+function getNameLength(name) {
+  return name.length;
+}
